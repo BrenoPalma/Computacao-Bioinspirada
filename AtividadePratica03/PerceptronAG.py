@@ -17,7 +17,7 @@ def classificaAmostra(X, peso):
     return previsao
 
 def avaliar_cromossomo(cromossomo, X_treino, y_treino):
-    peso_inicial = cromossomo[:-1]
+    peso_inicial = cromossomo
 
     # Avaliar o desempenho do Perceptron treinado
     previsoes = classificaAmostra(X_treino, peso_inicial)
@@ -27,7 +27,7 @@ def avaliar_cromossomo(cromossomo, X_treino, y_treino):
 
 
 def treinoPerceptronComAG(X_treino, y_treino, tamanhoPopulacao, taxaMutacao, numGeracoes,taxacross):
-    tc = X_treino.shape[1] + 1  # Tamanho do cromossomo
+    tc = X_treino.shape[1]  # Tamanho do cromossomo
     ng = numGeracoes
 
     # Função para avaliar a aptidão de um cromossomo
@@ -97,13 +97,13 @@ def treinoPerceptronComAG(X_treino, y_treino, tamanhoPopulacao, taxaMutacao, num
     melhor_individuo = algoritmo_evolutivo(tamanhoPopulacao, tc, ng, taxaMutacao, taxacross)
 
     # Obtém os pesos otimizados do melhor indivíduo
-    pesos_otimizados = melhor_individuo[:-1]
+    pesos_otimizados = melhor_individuo
 
     return pesos_otimizados
 # Características: comprimento das sépalas, largura das sépalas, comprimento das pétalas, largura das pétalas
 tamanhoPopulacao = 10
 taxaMutacao = 0.1
-numGeracoes = 100
+numGeracoes = 50
 taxaCross = 0.2
 tamTeste = 0.3
 
